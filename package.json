@@ -70,5 +70,14 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint",
+    "*.hbs": "ember-template-lint"
   }
 }
