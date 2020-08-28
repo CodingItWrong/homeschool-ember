@@ -1,12 +1,32 @@
-<h1 id="title">Welcome to Ember</h1>
-
-{{#if this.session.isAuthenticated}}
-  Signed In.
-  <button onclick={{this.signOut}}>Sign Out</button>
-{{/if}}
-
-{{#if this.routeRequiresAuthentication}}
-  <SignInForm @onSignedIn={{this.handleSignIn}} />
-{{else}}
-  {{outlet}}
-{{/if}}
+<LayoutContainer @title="Homeschool" as |layout|>
+  <layout.sidenav>
+    This is the sidebar!
+  </layout.sidenav>
+  <layout.body as |body|>
+    <body.toolbar @showSideNavToggle={{this.session.isAuthenticated}}>
+      {{#if this.session.isAuthenticated}}
+        <PaperMenu as |menu|>
+          <menu.trigger>
+            <PaperButton @iconButton={{true}}>
+              {{paper-icon "account_circle"}}
+            </PaperButton>
+          </menu.trigger>
+          <menu.content @width={{4}} as |content|>
+            <content.menu-item @onClick={{this.logOut}}>
+              <span>Log Out</span>
+            </content.menu-item>
+          </menu.content>
+        </PaperMenu>
+      {{/if}}
+    </body.toolbar>
+    <body.content>
+      <div class="layout-row">
+        <div class="hide show-gt-md flex-gt-md-10"></div>
+        <div class="flex-100 flex-gt-md-80">
+          {{outlet}}
+        </div>
+        <div class="hide show-gt-md flex-gt-md-10"></div>
+      </div>
+    </body.content>
+  </layout.body>
+</LayoutContainer>
