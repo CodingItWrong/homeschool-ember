@@ -18,5 +18,7 @@ export default function () {
   this.patch('/schedulings/:id');
 
   this.get('/students');
+
   this.get('/subjects');
+  this.post('/subjects');
 }

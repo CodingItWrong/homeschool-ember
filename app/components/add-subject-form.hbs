@@ -1,0 +1,13 @@
+<PaperForm @onSubmit={{this.handleAdd}} as |form|>
+  <form.input
+    @label="Add Subject"
+    @value={{this.name}}
+    @onChange={{action (mut this.name)}}
+  />
+  <form.submit-button
+    @raised={{true}}
+    @primary={{true}}
+  >
+    Add
+  </form.submit-button>
+</PaperForm>
