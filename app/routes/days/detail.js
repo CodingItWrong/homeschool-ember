@@ -9,6 +9,7 @@ export default class DaysDetailRoute extends Route {
         'schedulings.content',
         'schedulings.content.subject',
       ].join(','),
+      reload: true,
     });
   }
 }
