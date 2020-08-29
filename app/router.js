@@ -10,4 +10,8 @@ Router.map(function () {
   this.route('user', function () {
     this.route('new');
   });
+
+  this.route('days', function () {
+    this.route('detail', { path: '/:day_id' });
+  });
 });

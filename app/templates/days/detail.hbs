@@ -1,0 +1,18 @@
+{{formatted-date @model.date}}
+
+<table>
+  <thead>
+    <tr>
+      <th>Subject</th>
+      <th>Content</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each @model.schedulings as |scheduling|}}
+      <tr>
+        <td>{{scheduling.content.subject.name}}</td>
+        <td>{{scheduling.content.notes}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
