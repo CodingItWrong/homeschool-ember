@@ -1,8 +1,8 @@
 import Route from '@ember/routing/route';
 
-export default class FormsDetailRoute extends Route {
+export default class ContentYearsDetailRoute extends Route {
   model({ form_id }) {
-    return this.store.findRecord('form', form_id, {
+    return this.store.findRecord('contentYear', form_id, {
       include: ['contents', 'contents.subject'].join(','),
       reload: true,
     });

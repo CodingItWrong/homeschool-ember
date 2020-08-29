@@ -1,6 +1,6 @@
 import Model, { attr, belongsTo } from '@ember-data/model';
 
 export default class StudentModel extends Model {
-  @belongsTo('form', { async: false }) form;
+  @belongsTo('contentYear', { async: false }) contentYear;
   @attr name;
 }

@@ -12,8 +12,8 @@ export default function () {
   this.get('/days');
   this.get('/days/:id');
 
-  this.get('/forms');
-  this.get('/forms/:id');
+  this.get('/content-years');
+  this.get('/content-years/:id');
 
   this.patch('/schedulings/:id');
 

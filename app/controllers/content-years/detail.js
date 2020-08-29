@@ -1,7 +1,7 @@
 import Controller from '@ember/controller';
 import groupBy from 'lodash/groupBy';
 
-export default class FormsDetailController extends Controller {
+export default class ContentyearsDetailController extends Controller {
   get contentsGroupedBySubject() {
     const groupsObject = groupBy(this.model.contents.toArray(), 'subject');
     const groups = Object.entries(groupsObject).map(([, contents]) => ({

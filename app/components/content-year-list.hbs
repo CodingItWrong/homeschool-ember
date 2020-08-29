@@ -1,14 +1,14 @@
 <PaperCard>
   <PaperToolbar>
     <PaperToolbarTools>
-      <h2>Forms</h2>
+      <h2>Content Years</h2>
     </PaperToolbarTools>
   </PaperToolbar>
   <PaperContent>
     <PaperList>
-      {{#each @forms as |form|}}
-        <PaperItem @onClick={{fn this.goToForm form}}>
-          <p>Form {{form.number}}</p>
+      {{#each @contentYears as |contentYear|}}
+        <PaperItem @onClick={{fn this.goToContentYear contentYear}}>
+          <p>{{contentYear.name}}</p>
         </PaperItem>
         <PaperDivider />
       {{/each}}

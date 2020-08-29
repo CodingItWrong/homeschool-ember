@@ -15,7 +15,7 @@ Router.map(function () {
     this.route('detail', { path: '/:day_id' });
   });
 
-  this.route('forms', function () {
+  this.route('content-years', function () {
     this.route('detail', { path: '/:form_id' });
   });
 
