@@ -1,22 +1,29 @@
-{{formatted-date @model.date}}
+<h2>{{formatted-date @model.date}}</h2>
 
 {{#each this.schedulingsGroupedByStudent as |group|}}
-  <h2>{{group.student.name}}</h2>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Subject</th>
-        <th>Content</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each group.schedulings as |scheduling|}}
-        <tr>
-          <td>{{scheduling.content.subject.name}}</td>
-          <td>{{scheduling.content.notes}}</td>
-        </tr>
-      {{/each}}
-    </tbody>
-  </table>
+  <PaperCard as |card|>
+    <PaperToolbar>
+      <PaperToolbarTools>
+        <h2>{{group.student.name}}</h2>
+      </PaperToolbarTools>
+    </PaperToolbar>
+    <card.content>
+      <table>
+        <thead>
+          <tr>
+            <th>Subject</th>
+            <th>Content</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each group.schedulings as |scheduling|}}
+            <tr>
+              <td>{{scheduling.content.subject.name}}</td>
+              <td>{{scheduling.content.notes}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </card.content>
+  </PaperCard>
 {{/each}}
