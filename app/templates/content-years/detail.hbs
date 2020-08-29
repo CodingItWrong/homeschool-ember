@@ -1,5 +1,10 @@
 <h2>{{this.model.contentYear.name}}</h2>
 
+<AddSubjectToContentYearForm
+  @contentYear={{this.model.contentYear}}
+  @subjects={{this.model.subjects}}
+/>
+
 {{#each this.model.contentYear.subjects as |subject|}}
   <PaperCard>
     <PaperToolbar>

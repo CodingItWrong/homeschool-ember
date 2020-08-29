@@ -14,6 +14,7 @@ export default function () {
 
   this.get('/content-years');
   this.get('/content-years/:id');
+  this.patch('/content-years/:id');
 
   this.patch('/schedulings/:id');
 
