@@ -1,13 +1,19 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function (server) {
-  const year1 = server.create('contentYear', { name: 'Year 1' });
-  const year2 = server.create('contentYear', { name: 'Year 2' });
+  const history = server.create('subject', { name: 'History' });
+  const geography = server.create('subject', { name: 'Geography' });
+
+  const year1 = server.create('contentYear', {
+    name: 'Year 1',
+    subjects: [history, geography],
+  });
+  const year2 = server.create('contentYear', {
+    name: 'Year 2',
+    subjects: [history, geography],
+  });
 
   const mario = server.create('student', { name: 'Mario', contentYear: year2 });
   const luigi = server.create('student', { name: 'Luigi', contentYear: year1 });
-
-  const history = server.create('subject', { name: 'History' });
-  const geography = server.create('subject', { name: 'Geography' });
 
   const historyContent1A = server.create('content', {
     subject: history,
