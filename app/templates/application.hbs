@@ -1,6 +1,6 @@
 <LayoutContainer @title="Homeschool" as |layout|>
   <layout.sidenav>
-    This is the sidebar!
+    <AppSideNavContent />
   </layout.sidenav>
   <layout.body as |body|>
     <body.toolbar @showSideNavToggle={{this.session.isAuthenticated}}>

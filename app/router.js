@@ -14,4 +14,5 @@ Router.map(function () {
   this.route('days', function () {
     this.route('detail', { path: '/:day_id' });
   });
+  this.route('students');
 });
