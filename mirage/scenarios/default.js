@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function (server) {
-  const form1 = server.create('form', { name: 'Form 1' });
-  const form2 = server.create('form', { name: 'Form 2' });
+  const form1 = server.create('form', { number: 1 });
+  const form2 = server.create('form', { number: 2 });
 
   const mario = server.create('student', { name: 'Mario', form: form2 });
   const luigi = server.create('student', { name: 'Luigi', form: form1 });
