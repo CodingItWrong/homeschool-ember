@@ -14,6 +14,10 @@ Router.map(function () {
   this.route('days', function () {
     this.route('detail', { path: '/:day_id' });
   });
+
+  this.route('forms', function () {
+    this.route('detail', { path: '/:form_id' });
+  });
+
   this.route('students');
-  this.route('forms');
 });

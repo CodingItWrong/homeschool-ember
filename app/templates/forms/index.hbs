@@ -7,10 +7,8 @@
   <PaperContent>
     <PaperList>
       {{#each this.model as |form|}}
-        <PaperItem>
-          <p>
-            Form {{form.number}}
-          </p>
+        <PaperItem @onClick={{fn this.goToForm form}}>
+          <p>Form {{form.number}}</p>
         </PaperItem>
         <PaperDivider />
       {{/each}}

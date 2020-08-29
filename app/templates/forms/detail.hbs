@@ -1,0 +1,21 @@
+<h2>Form {{this.model.number}}</h2>
+
+{{#each this.contentsGroupedBySubject as |group|}}
+  <PaperCard>
+    <PaperToolbar>
+      <PaperToolbarTools>
+        <h2>{{group.subject.name}}</h2>
+      </PaperToolbarTools>
+    </PaperToolbar>
+    <PaperContent>
+      <PaperList>
+        {{#each group.contents as |content|}}
+          <PaperItem>
+            <p>{{content.notes}}</p>
+          </PaperItem>
+          <PaperDivider />
+        {{/each}}
+      </PaperList>
+    </PaperContent>
+  </PaperCard>
+{{/each}}
