@@ -1,8 +1,8 @@
-import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
+import Component from '@glimmer/component';
 
-export default class FormsIndexController extends Controller {
+export default class FormListComponent extends Component {
   @service router;
 
   @action goToForm(form) {

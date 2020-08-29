@@ -1,17 +1,1 @@
-<PaperCard>
-  <PaperToolbar>
-    <PaperToolbarTools>
-      <h2>Forms</h2>
-    </PaperToolbarTools>
-  </PaperToolbar>
-  <PaperContent>
-    <PaperList>
-      {{#each this.model as |form|}}
-        <PaperItem @onClick={{fn this.goToForm form}}>
-          <p>Form {{form.number}}</p>
-        </PaperItem>
-        <PaperDivider />
-      {{/each}}
-    </PaperList>
-  </PaperContent>
-</PaperCard>
+<FormList @forms={{this.model}} />
