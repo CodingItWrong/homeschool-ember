@@ -1,0 +1,25 @@
+<PaperCard>
+  <PaperToolbar>
+    <PaperToolbarTools>
+      <h2>Subjects</h2>
+    </PaperToolbarTools>
+  </PaperToolbar>
+  <PaperContent>
+    <PaperList>
+      {{#each @subjects as |subject|}}
+        <PaperItem as |controls|>
+          <p>{{subject.name}}</p>
+          <div class="md-secondary-container">
+            <controls.button
+              @iconButton={{true}}
+              @onClick={{fn this.handleDelete subject}}
+            >
+              {{paper-icon "delete"}}
+            </controls.button>
+          </div>
+        </PaperItem>
+        <PaperDivider />
+      {{/each}}
+    </PaperList>
+  </PaperContent>
+</PaperCard>

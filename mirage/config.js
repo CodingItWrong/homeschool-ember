@@ -21,4 +21,5 @@ export default function () {
 
   this.get('/subjects');
   this.post('/subjects');
+  this.delete('/subjects/:id');
 }
