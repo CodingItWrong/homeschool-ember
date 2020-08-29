@@ -7,4 +7,5 @@ export default function () {
       created_at: 1531855327,
     };
   });
+  this.get('/days/:id');
 }
