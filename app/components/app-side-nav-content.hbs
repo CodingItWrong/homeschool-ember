@@ -18,8 +18,15 @@
       @onClick={{fn this.goToRoute "forms"}}
       data-test-available
     >
-      {{paper-icon "library_books"}}
+      {{paper-icon "assignment"}}
       <p>Forms</p>
+    </PaperItem>
+    <PaperItem
+      @onClick={{fn this.goToRoute "subjects"}}
+      data-test-available
+    >
+      {{paper-icon "collections_bookmark"}}
+      <p>Subjects</p>
     </PaperItem>
   </PaperList>
 {{/if}}

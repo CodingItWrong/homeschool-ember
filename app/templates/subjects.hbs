@@ -1,0 +1,17 @@
+<PaperCard>
+  <PaperToolbar>
+    <PaperToolbarTools>
+      <h2>Subjects</h2>
+    </PaperToolbarTools>
+  </PaperToolbar>
+  <PaperContent>
+    <PaperList>
+      {{#each this.model as |subject|}}
+        <PaperItem>
+          <p>{{subject.name}}</p>
+        </PaperItem>
+        <PaperDivider />
+      {{/each}}
+    </PaperList>
+  </PaperContent>
+</PaperCard>
