@@ -3,7 +3,7 @@ import groupBy from 'lodash/groupBy';
 
 export default class ContentYearsDetailController extends Controller {
   get contentsGroupedBySubjectId() {
-    const contentsWithSubjectId = this.model.contents
+    const contentsWithSubjectId = this.model.contentYear.contents
       .toArray()
       .map(content => ({ subjectId: content.subject.id, content }));
     const groups = groupBy(contentsWithSubjectId, 'subjectId');
