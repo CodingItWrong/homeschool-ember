@@ -5,6 +5,7 @@ export default class DaysDetailRoute extends Route {
     return this.store.findRecord('day', day_id, {
       include: [
         'schedulings',
+        'schedulings.student',
         'schedulings.content',
         'schedulings.content.subject',
       ].join(','),
