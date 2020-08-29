@@ -1,15 +1,15 @@
 <h2>{{this.model.name}}</h2>
 
-{{#each this.contentsGroupedBySubject as |group|}}
+{{#each this.model.subjects as |subject|}}
   <PaperCard>
     <PaperToolbar>
       <PaperToolbarTools>
-        <h2>{{group.subject.name}}</h2>
+        <h2>{{subject.name}}</h2>
       </PaperToolbarTools>
     </PaperToolbar>
     <PaperContent>
       <PaperList>
-        {{#each group.contents as |content|}}
+        {{#each (get this.contentsGroupedBySubjectId subject.id) as |content|}}
           <PaperItem>
             <p>{{content.notes}}</p>
           </PaperItem>

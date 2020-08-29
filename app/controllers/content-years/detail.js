@@ -1,13 +1,18 @@
 import Controller from '@ember/controller';
 import groupBy from 'lodash/groupBy';
 
-export default class ContentyearsDetailController extends Controller {
-  get contentsGroupedBySubject() {
-    const groupsObject = groupBy(this.model.contents.toArray(), 'subject');
-    const groups = Object.entries(groupsObject).map(([, contents]) => ({
-      subject: contents[0].subject,
-      contents,
-    }));
-    return groups;
+export default class ContentYearsDetailController extends Controller {
+  get contentsGroupedBySubjectId() {
+    const contentsWithSubjectId = this.model.contents
+      .toArray()
+      .map(content => ({ subjectId: content.subject.id, content }));
+    const groups = groupBy(contentsWithSubjectId, 'subjectId');
+    const groupsWithUnwrappedContents = Object.fromEntries(
+      Object.entries(groups).map(([subjectId, wrappedContents]) => {
+        const contents = wrappedContents.map(({ content }) => content);
+        return [subjectId, contents];
+      }),
+    );
+    return groupsWithUnwrappedContents;
   }
 }
