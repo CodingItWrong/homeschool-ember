@@ -1,29 +1,29 @@
 <h2>{{formatted-date @model.date}}</h2>
 
 {{#each this.schedulingsGroupedByStudent as |group|}}
-  <PaperCard as |card|>
+  <PaperCard>
     <PaperToolbar>
       <PaperToolbarTools>
         <h2>{{group.student.name}}</h2>
       </PaperToolbarTools>
     </PaperToolbar>
-    <card.content>
-      <table>
-        <thead>
-          <tr>
-            <th>Subject</th>
-            <th>Content</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each group.schedulings as |scheduling|}}
-            <tr>
-              <td>{{scheduling.content.subject.name}}</td>
-              <td>{{scheduling.content.notes}}</td>
-            </tr>
-          {{/each}}
-        </tbody>
-      </table>
-    </card.content>
+    <PaperContent>
+      <PaperList>
+        {{#each group.schedulings as |scheduling|}}
+          <PaperItem as |controls|>
+            <p>
+              {{scheduling.content.subject.name}}:
+              {{scheduling.content.notes}}
+            </p>
+            <div class="md-secondary-container">
+              <controls.checkbox
+                @value={{scheduling.complete}}
+                @onChange={{fn this.handleToggleComplete scheduling}}
+              />
+            </div>
+          </PaperItem>
+        {{/each}}
+      </PaperList>
+    </PaperContent>
   </PaperCard>
 {{/each}}

@@ -66,40 +66,48 @@ export default function (server) {
     day: aug31,
     student: luigi,
     content: historyContent1A,
+    complete: false,
   });
   server.create('scheduling', {
     day: aug31,
     student: mario,
     content: historyContent2A,
+    complete: true,
   });
   server.create('scheduling', {
     day: aug31,
     student: luigi,
     content: geographyContent1A,
+    complete: true,
   });
   server.create('scheduling', {
     day: aug31,
     student: mario,
     content: geographyContent2A,
+    complete: false,
   });
   server.create('scheduling', {
     day: sep1,
     student: luigi,
     content: historyContent1B,
+    complete: false,
   });
   server.create('scheduling', {
     day: sep1,
     student: mario,
     content: historyContent2B,
+    complete: false,
   });
   server.create('scheduling', {
     day: sep1,
     student: luigi,
     content: geographyContent1B,
+    complete: false,
   });
   server.create('scheduling', {
     day: sep1,
     student: mario,
     content: geographyContent2B,
+    complete: false,
   });
 }

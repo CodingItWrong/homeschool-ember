@@ -15,5 +15,7 @@ export default function () {
   this.get('/forms');
   this.get('/forms/:id');
 
+  this.patch('/schedulings/:id');
+
   this.get('/students');
 }
