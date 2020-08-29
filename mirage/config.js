@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-anonymous-default-export
 export default function () {
   this.post('/oauth/token', () => {
     return {
@@ -7,5 +8,6 @@ export default function () {
       created_at: 1531855327,
     };
   });
+  this.get('/days');
   this.get('/days/:id');
 }
