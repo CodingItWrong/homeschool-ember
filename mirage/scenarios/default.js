@@ -2,10 +2,12 @@
 export default function (server) {
   const history = server.create('subject', { name: 'History' });
   const geography = server.create('subject', { name: 'Geography' });
+  const literature = server.create('subject', { name: 'Literature' });
+  server.create('subject', { name: 'Math' });
 
   const year1 = server.create('contentYear', {
     name: 'Year 1',
-    subjects: [history, geography],
+    subjects: [history, geography, literature],
   });
   const year2 = server.create('contentYear', {
     name: 'Year 2',
