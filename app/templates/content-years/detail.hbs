@@ -10,6 +10,10 @@
     <PaperToolbar>
       <PaperToolbarTools>
         <h2>{{subject.name}}</h2>
+        <span class="flex"></span>
+        <PaperButton @iconButton={{true}} @onClick={{fn this.removeSubject subject}}>
+          {{paper-icon "delete"}}
+        </PaperButton>
       </PaperToolbarTools>
     </PaperToolbar>
     <PaperContent>

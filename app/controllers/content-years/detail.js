@@ -1,4 +1,5 @@
 import Controller from '@ember/controller';
+import { action } from '@ember/object';
 import groupBy from 'lodash/groupBy';
 
 export default class ContentYearsDetailController extends Controller {
@@ -14,5 +15,25 @@ export default class ContentYearsDetailController extends Controller {
       }),
     );
     return groupsWithUnwrappedContents;
+  }
+
+  @action async removeSubject(subject) {
+    const { contentYear } = this.model;
+
+    if (
+      !confirm(
+        `Are you sure you want to remove ${subject.name} from ${contentYear.name}?`,
+      )
+    ) {
+      return;
+    }
+
+    contentYear.subjects.removeObject(subject);
+
+    try {
+      await contentYear.save();
+    } catch (e) {
+      console.error(e);
+    }
   }
 }
