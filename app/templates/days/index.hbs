@@ -1,11 +1,17 @@
-<h2>Days</h2>
-
-<ul>
-  {{#each this.model as |day|}}
-    <li>
-      <LinkTo @route="days.detail" @model={{day.id}}>
-        {{formatted-date day.date}}
-      </LinkTo>
-    </li>
-  {{/each}}
-</ul>
+<PaperCard>
+  <PaperToolbar>
+    <PaperToolbarTools>
+      <h2>Days</h2>
+    </PaperToolbarTools>
+  </PaperToolbar>
+  <PaperContent>
+    <PaperList>
+      {{#each this.model as |day|}}
+        <PaperItem @onClick={{fn this.goToDay day}}>
+          <p>{{formatted-date day.date}}</p>
+        </PaperItem>
+        <PaperDivider />
+      {{/each}}
+    </PaperList>
+  </PaperContent>
+</PaperCard>
