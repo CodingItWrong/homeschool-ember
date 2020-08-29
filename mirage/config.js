@@ -12,5 +12,7 @@ export default function () {
   this.get('/days');
   this.get('/days/:id');
 
+  this.get('/forms');
+
   this.get('/students');
 }

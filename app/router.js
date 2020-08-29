@@ -15,4 +15,5 @@ Router.map(function () {
     this.route('detail', { path: '/:day_id' });
   });
   this.route('students');
+  this.route('forms');
 });

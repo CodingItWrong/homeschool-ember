@@ -14,5 +14,12 @@
       {{paper-icon "face"}}
       <p>Students</p>
     </PaperItem>
+    <PaperItem
+      @onClick={{fn this.goToRoute "forms"}}
+      data-test-available
+    >
+      {{paper-icon "library_books"}}
+      <p>Forms</p>
+    </PaperItem>
   </PaperList>
 {{/if}}
