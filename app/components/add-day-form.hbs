@@ -1,0 +1,14 @@
+<PaperForm @onSubmit={{this.handleAdd}} as |form|>
+  <form.input
+    @type="date"
+    @label="Add Day"
+    @value={{this.date}}
+    @onChange={{action (mut this.date)}}
+  />
+  <form.submit-button
+    @raised={{true}}
+    @primary={{true}}
+  >
+    Add
+  </form.submit-button>
+</PaperForm>

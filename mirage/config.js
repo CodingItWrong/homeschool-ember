@@ -10,6 +10,7 @@ export default function () {
   });
 
   this.get('/days');
+  this.post('/days');
   this.get('/days/:id');
 
   this.get('/content-years');
