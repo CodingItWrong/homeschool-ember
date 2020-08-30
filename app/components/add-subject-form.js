@@ -17,6 +17,7 @@ export default class AddSubjectFormComponent extends Component {
       await subject.save();
       this.name = '';
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.error(e);
     }
   }

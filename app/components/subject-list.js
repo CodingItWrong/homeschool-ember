@@ -6,6 +6,7 @@ export default class SubjectListComponent extends Component {
     try {
       await subject.destroyRecord();
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.error(e);
     }
   }

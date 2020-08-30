@@ -22,6 +22,7 @@ export default class AddDayFormComponent extends Component {
       await day.save();
       this.date = null;
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.error(e);
     }
   }

@@ -18,6 +18,7 @@ export default class AddSubjectToContentYearFormComponent extends Component {
       await contentYear.save();
       this.subject = '';
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.error(e);
     }
   }

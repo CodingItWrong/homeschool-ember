@@ -36,6 +36,7 @@ export default class ContentYearsDetailController extends Controller {
     try {
       await contentYear.save();
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.error(e);
     }
   }

@@ -13,6 +13,7 @@ export default class DayListComponent extends Component {
     try {
       await day.destroyRecord();
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.error(e);
     }
   }
