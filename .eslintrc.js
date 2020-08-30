@@ -25,6 +25,7 @@ module.exports = {
     'import/no-anonymous-default-export': 'error',
     'import/no-mutable-exports': 'error',
     'import/order': ['error', { alphabetize: { order: 'asc' } }],
+    'no-console': 'error',
     'no-duplicate-imports': 'error',
     'sort-imports': ['error', { ignoreDeclarationSort: true }],
   },
