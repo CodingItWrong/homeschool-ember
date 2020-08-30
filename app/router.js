@@ -16,7 +16,7 @@ Router.map(function () {
   });
 
   this.route('content-years', function () {
-    this.route('detail', { path: '/:form_id' });
+    this.route('detail', { path: '/:content_year_id' });
   });
 
   this.route('students');
