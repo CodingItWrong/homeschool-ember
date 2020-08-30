@@ -8,4 +8,12 @@ export default class DayListComponent extends Component {
   @action goToDay(day) {
     this.router.transitionTo('days.detail', day.id);
   }
+
+  @action async handleDelete(day) {
+    try {
+      await day.destroyRecord();
+    } catch (e) {
+      console.error(e);
+    }
+  }
 }

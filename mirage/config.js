@@ -12,6 +12,7 @@ export default function () {
   this.get('/days');
   this.post('/days');
   this.get('/days/:id');
+  this.delete('/days/:id');
 
   this.get('/content-years');
   this.get('/content-years/:id');

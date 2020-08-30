@@ -7,8 +7,19 @@
   <PaperContent>
     <PaperList>
       {{#each @days as |day|}}
-        <PaperItem @onClick={{fn this.goToDay day}}>
+        <PaperItem
+          @onClick={{fn this.goToDay day}}
+          as |controls|
+        >
           <p>{{formatted-date day.date}}</p>
+          <div class="md-secondary-container">
+            <controls.button
+              @iconButton={{true}}
+              @onClick={{fn this.handleDelete day}}
+            >
+              {{paper-icon "delete"}}
+            </controls.button>
+          </div>
         </PaperItem>
         <PaperDivider />
       {{/each}}
