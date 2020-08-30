@@ -11,12 +11,14 @@ Router.map(function () {
     this.route('new');
   });
 
-  this.route('days', function () {
-    this.route('detail', { path: '/:day_id' });
-  });
-
   this.route('content-years', function () {
     this.route('detail', { path: '/:content_year_id' });
+  });
+
+  this.route('contents', { path: '/content/:content_id' });
+
+  this.route('days', function () {
+    this.route('detail', { path: '/:day_id' });
   });
 
   this.route('students');

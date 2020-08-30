@@ -19,7 +19,7 @@
     <PaperContent>
       <PaperList>
         {{#each (get this.contentsGroupedBySubjectId subject.id) as |content|}}
-          <PaperItem>
+          <PaperItem @onClick={{fn this.goToContent content}}>
             <p>{{content.notes}}</p>
           </PaperItem>
           <PaperDivider />

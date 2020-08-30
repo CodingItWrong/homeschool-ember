@@ -1,8 +1,11 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
 import groupBy from 'lodash/groupBy';
 
 export default class ContentYearsDetailController extends Controller {
+  @service router;
+
   get contentsGroupedBySubjectId() {
     const contentsWithSubjectId = this.model.contentYear.contents
       .toArray()
@@ -35,5 +38,9 @@ export default class ContentYearsDetailController extends Controller {
     } catch (e) {
       console.error(e);
     }
+  }
+
+  @action goToContent(content) {
+    this.router.transitionTo('contents', content.id);
   }
 }

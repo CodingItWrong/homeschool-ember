@@ -1,0 +1,19 @@
+<PaperCard as |card|>
+  <card.title as |title|>
+    <title.text as |text|>
+      <text.headline>{{this.model.notes}}</text.headline>
+    </title.text>
+  </card.title>
+  <card.content>
+    <div>
+      Subject:
+      {{this.model.subject.name}}
+    </div>
+    <div>
+      Content Year:
+      <LinkTo @route="content-years.detail" @model={{this.model.contentYear.id}}>
+        {{this.model.contentYear.name}}
+      </LinkTo>
+    </div>
+  </card.content>
+</PaperCard>
