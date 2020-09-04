@@ -1,5 +1,29 @@
 <h2>{{formatted-date @model.date}}</h2>
 
+<h3>Student Day Content</h3>
+
+{{#each this.model.studentDays as |studentDay|}}
+  <PaperCard>
+    <PaperToolbar>
+      <PaperToolbarTools>
+        <h2>{{studentDay.student.name}}</h2>
+      </PaperToolbarTools>
+    </PaperToolbar>
+    <PaperContent>
+      <PaperList>
+        {{#each studentDay.contentDay.contents as |content|}}
+          <PaperItem>
+            <p>
+              {{content.subject.name}}:
+              {{content.notes}}
+            </p>
+          </PaperItem>
+        {{/each}}
+      </PaperList>
+    </PaperContent>
+  </PaperCard>
+{{/each}}
+
 {{#each this.schedulingsGroupedByStudent as |group|}}
   <PaperCard>
     <PaperToolbar>
