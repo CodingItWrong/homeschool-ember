@@ -24,6 +24,7 @@ export default function () {
   this.get('/days/:id');
   this.delete('/days/:id');
 
+  this.post('/schedulings');
   this.patch('/schedulings/:id');
 
   this.get('/students');
