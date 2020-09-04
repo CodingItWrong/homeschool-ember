@@ -6,6 +6,6 @@ export default class ContentWeekListComponent extends Component {
   @service router;
 
   @action goToContentWeek(contentWeek) {
-    this.router.transitionTo('content-weeks.detail', contentWeek.id);
+    this.router.transitionTo('content-week', contentWeek.id);
   }
 }

@@ -11,6 +11,8 @@ export default function () {
 
   this.get('/contents/:id');
 
+  this.get('/content-weeks/:id');
+
   this.get('/content-years');
   this.get('/content-years/:id');
   this.patch('/content-years/:id');
