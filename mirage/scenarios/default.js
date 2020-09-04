@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function (server) {
   const history = server.create('subject', { name: 'History' });
@@ -14,108 +15,82 @@ export default function (server) {
     subjects: [history, geography],
   });
 
-  const mario = server.create('student', { name: 'Mario', contentYear: year2 });
-  const luigi = server.create('student', { name: 'Luigi', contentYear: year1 });
-
-  const historyContent1A = server.create('content', {
-    subject: history,
+  const year1Week1 = server.create('contentWeek', {
     contentYear: year1,
+    number: 1,
+  });
+  const year1Week2 = server.create('contentWeek', {
+    contentYear: year1,
+    number: 2,
+  });
+
+  const week1Monday = server.create('contentDay', {
+    contentWeek: year1Week1,
+    dayOfWeek: 'Monday',
+  });
+  const week1Tuesday = server.create('contentDay', {
+    contentWeek: year1Week1,
+    dayOfWeek: 'Tuesday',
+  });
+  const week1Wednesday = server.create('contentDay', {
+    contentWeek: year1Week1,
+    dayOfWeek: 'Wednesday',
+  });
+  const week1Thursday = server.create('contentDay', {
+    contentWeek: year1Week1,
+    dayOfWeek: 'Thursday',
+  });
+  const week1Friday = server.create('contentDay', {
+    contentWeek: year1Week1,
+    dayOfWeek: 'Friday',
+  });
+
+  const historyContent1 = server.create('content', {
+    subject: history,
+    contentDay: week1Monday,
     notes: 'Leif the Lucky, first half',
-    sequenceNumber: 1,
   });
-  const historyContent1B = server.create('content', {
+  const historyContent2 = server.create('content', {
     subject: history,
-    contentYear: year1,
+    contentDay: week1Tuesday,
     notes: 'Leif the Lucky, second half',
-    sequenceNumber: 2,
-  });
-  const historyContent2A = server.create('content', {
-    subject: history,
-    contentYear: year2,
-    notes: 'Year 2 history day 1',
-    sequenceNumber: 1,
-  });
-  const historyContent2B = server.create('content', {
-    subject: history,
-    contentYear: year2,
-    notes: 'Year 2 history day 2',
-    sequenceNumber: 2,
   });
 
-  const geographyContent1A = server.create('content', {
+  const geographyContent1 = server.create('content', {
     subject: geography,
-    contentYear: year1,
+    contentDay: week1Monday,
     notes: 'Home Geography, lessons 1-2',
     sequenceNumber: 1,
   });
-  const geographyContent1B = server.create('content', {
+  const geographyContent2 = server.create('content', {
     subject: geography,
-    contentYear: year1,
+    contentDay: week1Tuesday,
     notes: 'Home Geography, lessons 3-4',
-    sequenceNumber: 2,
-  });
-  const geographyContent2A = server.create('content', {
-    subject: geography,
-    contentYear: year2,
-    notes: 'Year 2 geography day 1',
-    sequenceNumber: 1,
-  });
-  const geographyContent2B = server.create('content', {
-    subject: geography,
-    contentYear: year2,
-    notes: 'Year 2 geography day 2',
     sequenceNumber: 2,
   });
 
   const aug31 = server.create('day', { date: new Date(2020, 7, 31, 0, 0, 0) });
   const sep1 = server.create('day', { date: new Date(2020, 8, 1, 0, 0, 0) });
 
-  server.create('scheduling', {
+  const mario = server.create('student', { name: 'Mario', contentYear: year2 });
+  const luigi = server.create('student', { name: 'Luigi', contentYear: year1 });
+
+  server.create('studentDay', {
     day: aug31,
-    student: luigi,
-    content: historyContent1A,
-    complete: false,
+    student: mario,
+    contentDay: week1Monday,
   });
+  server.create('studentDay', {
+    day: sep1,
+    student: mario,
+    contentDay: week1Tuesday,
+  });
+
   server.create('scheduling', {
     day: aug31,
     student: mario,
-    content: historyContent2A,
+    content: historyContent1,
     complete: true,
-  });
-  server.create('scheduling', {
-    day: aug31,
-    student: luigi,
-    content: geographyContent1A,
-    complete: true,
-  });
-  server.create('scheduling', {
-    day: aug31,
-    student: mario,
-    content: geographyContent2A,
-    complete: false,
-  });
-  server.create('scheduling', {
-    day: sep1,
-    student: luigi,
-    content: historyContent1B,
-    complete: false,
-  });
-  server.create('scheduling', {
-    day: sep1,
-    student: mario,
-    content: historyContent2B,
-    complete: false,
-  });
-  server.create('scheduling', {
-    day: sep1,
-    student: luigi,
-    content: geographyContent1B,
-    complete: false,
-  });
-  server.create('scheduling', {
-    day: sep1,
-    student: mario,
-    content: geographyContent2B,
-    complete: false,
   });
 }
+/* eslint-enable no-unused-vars */

@@ -1,0 +1,17 @@
+<PaperCard>
+  <PaperToolbar>
+    <PaperToolbarTools>
+      <h2>Content Weeks</h2>
+    </PaperToolbarTools>
+  </PaperToolbar>
+  <PaperContent>
+    <PaperList>
+      {{#each @contentWeeks as |contentWeek|}}
+        <PaperItem @onClick={{fn this.goToContentWeek contentWeek}}>
+          <p>Week {{contentWeek.number}}</p>
+        </PaperItem>
+        <PaperDivider />
+      {{/each}}
+    </PaperList>
+  </PaperContent>
+</PaperCard>

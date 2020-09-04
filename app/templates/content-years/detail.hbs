@@ -5,30 +5,6 @@
   @subjects={{this.model.subjects}}
 />
 
-{{#each this.model.contentYear.subjects as |subject|}}
-  <PaperCard>
-    <PaperToolbar>
-      <PaperToolbarTools>
-        <h2>{{subject.name}}</h2>
-        <span class="flex"></span>
-        <PaperButton @iconButton={{true}} @onClick={{fn this.removeSubject subject}}>
-          {{paper-icon "delete"}}
-        </PaperButton>
-      </PaperToolbarTools>
-    </PaperToolbar>
-    <PaperContent>
-      <PaperList>
-        {{#each (get this.contentsGroupedBySubjectId subject.id) as |content|}}
-          <PaperItem @onClick={{fn this.goToContent content}}>
-            <p>{{content.notes}}</p>
-          </PaperItem>
-          <PaperDivider />
-        {{else}}
-          <PaperItem>
-            <p><em>(no contents yet)</em></p>
-          </PaperItem>
-        {{/each}}
-      </PaperList>
-    </PaperContent>
-  </PaperCard>
-{{/each}}
+<ContentYearSubjectList @contentYear={{this.model.contentYear}} />
+
+<ContentWeekList @contentWeeks={{this.model.contentYear.contentWeeks}} />

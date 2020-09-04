@@ -5,7 +5,7 @@ export default class ContentYearsDetailRoute extends Route {
   model({ content_year_id }) {
     return RSVP.hash({
       contentYear: this.store.findRecord('contentYear', content_year_id, {
-        include: ['subjects', 'contents', 'contents.subject'].join(','),
+        include: ['subjects', 'contentWeeks'].join(','),
         reload: true,
       }),
       subjects: this.store.findAll('subject', { reload: true }),
