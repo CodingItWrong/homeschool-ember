@@ -1,3 +1,3 @@
-<h2>{{formatted-date @model.date}}</h2>
+<h2>{{formatted-date @model.day.date}}</h2>
 
-<SchedulingListsByStudent @day={{this.model}} />
+<SchedulingListsByStudent @day={{@model.day}} />
