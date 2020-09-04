@@ -1,0 +1,27 @@
+{{#each this.schedulingsGroupedByStudent as |group|}}
+  <PaperCard>
+    <PaperToolbar>
+      <PaperToolbarTools>
+        <h2>{{group.student.name}}</h2>
+      </PaperToolbarTools>
+    </PaperToolbar>
+    <PaperContent>
+      <PaperList>
+        {{#each group.contentSchedulingPairs as |contentSchedulingPair|}}
+          <PaperItem as |controls|>
+            <p>
+              {{contentSchedulingPair.content.subject.name}}:
+              {{contentSchedulingPair.content.notes}}
+            </p>
+            <div class="md-secondary-container">
+              <controls.checkbox
+                @value={{contentSchedulingPair.scheduling.complete}}
+                @onChange={{fn this.handleToggleComplete contentSchedulingPair}}
+              />
+            </div>
+          </PaperItem>
+        {{/each}}
+      </PaperList>
+    </PaperContent>
+  </PaperCard>
+{{/each}}

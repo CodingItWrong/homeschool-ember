@@ -23,49 +23,87 @@ export default function (server) {
     contentYear: year1,
     number: 2,
   });
+  const year2Week1 = server.create('contentWeek', {
+    contentYear: year2,
+    number: 1,
+  });
+  const year2Week2 = server.create('contentWeek', {
+    contentYear: year2,
+    number: 2,
+  });
 
-  const week1Monday = server.create('contentDay', {
+  const year1Week1Monday = server.create('contentDay', {
     contentWeek: year1Week1,
     dayOfWeek: 'Monday',
   });
-  const week1Tuesday = server.create('contentDay', {
+  const year1Week1Tuesday = server.create('contentDay', {
     contentWeek: year1Week1,
     dayOfWeek: 'Tuesday',
   });
-  const week1Wednesday = server.create('contentDay', {
+  const year1Week1Wednesday = server.create('contentDay', {
     contentWeek: year1Week1,
     dayOfWeek: 'Wednesday',
   });
-  const week1Thursday = server.create('contentDay', {
+  const year1Week1Thursday = server.create('contentDay', {
     contentWeek: year1Week1,
     dayOfWeek: 'Thursday',
   });
-  const week1Friday = server.create('contentDay', {
+  const year1Week1Friday = server.create('contentDay', {
     contentWeek: year1Week1,
     dayOfWeek: 'Friday',
   });
+  const year2Week1Monday = server.create('contentDay', {
+    contentWeek: year2Week1,
+    dayOfWeek: 'Monday',
+  });
+  const year2Week1Tuesday = server.create('contentDay', {
+    contentWeek: year2Week1,
+    dayOfWeek: 'Tuesday',
+  });
 
-  const historyContent1 = server.create('content', {
+  const historyContent1A = server.create('content', {
     subject: history,
-    contentDay: week1Monday,
+    contentDay: year1Week1Monday,
     notes: 'Leif the Lucky, first half',
   });
-  const historyContent2 = server.create('content', {
+  const historyContent1B = server.create('content', {
     subject: history,
-    contentDay: week1Tuesday,
+    contentDay: year1Week1Tuesday,
     notes: 'Leif the Lucky, second half',
   });
+  const historyContent2A = server.create('content', {
+    subject: history,
+    contentDay: year2Week1Monday,
+    notes: 'History Year 2 Content 1',
+  });
+  const historyContent2B = server.create('content', {
+    subject: history,
+    contentDay: year2Week1Tuesday,
+    notes: 'History Year 2 Content 2',
+  });
 
-  const geographyContent1 = server.create('content', {
+  const geographyContent1A = server.create('content', {
     subject: geography,
-    contentDay: week1Monday,
+    contentDay: year1Week1Monday,
     notes: 'Home Geography, lessons 1-2',
     sequenceNumber: 1,
   });
-  const geographyContent2 = server.create('content', {
+  const geographyContent1B = server.create('content', {
     subject: geography,
-    contentDay: week1Tuesday,
+    contentDay: year1Week1Tuesday,
     notes: 'Home Geography, lessons 3-4',
+    sequenceNumber: 2,
+  });
+  const geographyContent2A = server.create('content', {
+    subject: geography,
+    contentDay: year2Week1Monday,
+    notes: 'Geography Year 2 Content 1',
+    sequenceNumber: 1,
+  });
+  const geographyContent2B = server.create('content', {
+    subject: geography,
+    contentDay: year1Week1Tuesday,
+    notes: 'Geography Year 2 Content 2',
     sequenceNumber: 2,
   });
 
@@ -78,18 +116,23 @@ export default function (server) {
   server.create('studentDay', {
     day: aug31,
     student: mario,
-    contentDay: week1Monday,
+    contentDay: year2Week1Monday,
+  });
+  server.create('studentDay', {
+    day: aug31,
+    student: luigi,
+    contentDay: year1Week1Monday,
   });
   server.create('studentDay', {
     day: sep1,
-    student: mario,
-    contentDay: week1Tuesday,
+    student: luigi,
+    contentDay: year1Week1Tuesday,
   });
 
   server.create('scheduling', {
     day: aug31,
     student: mario,
-    content: historyContent1,
+    content: historyContent2A,
     complete: true,
   });
 }

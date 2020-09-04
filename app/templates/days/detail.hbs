@@ -2,6 +2,10 @@
 
 <h3>Student Day Content</h3>
 
+<SchedulingListsByStudent @day={{this.model}} />
+
+<h2>OLD</h2>
+
 {{#each this.model.studentDays as |studentDay|}}
   <PaperCard>
     <PaperToolbar>
