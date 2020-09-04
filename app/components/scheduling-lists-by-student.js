@@ -2,7 +2,9 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Component from '@glimmer/component';
 import matchesProperty from 'lodash/matchesProperty';
+import property from 'lodash/property';
 import uniq from 'lodash/uniq';
+import uniqBy from 'lodash/uniqBy';
 
 export default class SchedulingListsByStudentComponent extends Component {
   @service store;
@@ -16,22 +18,26 @@ export default class SchedulingListsByStudentComponent extends Component {
     ]);
 
     const groups = students.map(student => {
-      const contentSchedulingPairs = uniq([
-        ...day.studentDays
-          .filter(matchesProperty('student.id', student.id))
-          .flatMap(studentDay =>
-            studentDay.contentDay.contents.map(content => ({
-              content,
-              scheduling: null,
+      const contentSchedulingPairs = uniqBy(
+        [
+          // schedulings must come first so uniqBy prefers them
+          ...day.schedulings
+            .filter(matchesProperty('student.id', student.id))
+            .map(scheduling => ({
+              content: scheduling.content,
+              scheduling,
             })),
-          ),
-        ...day.schedulings
-          .filter(matchesProperty('student.id', student.id))
-          .map(scheduling => ({
-            content: scheduling.content,
-            scheduling,
-          })),
-      ]);
+          ...day.studentDays
+            .filter(matchesProperty('student.id', student.id))
+            .flatMap(studentDay =>
+              studentDay.contentDay.contents.map(content => ({
+                content,
+                scheduling: null,
+              })),
+            ),
+        ],
+        property('content.id'),
+      );
 
       return {
         student,
