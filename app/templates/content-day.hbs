@@ -1,6 +1,18 @@
-<h2>
-  Week {{this.model.contentWeek.number}}
-  {{this.model.dayOfWeek}}
-</h2>
+<div>
+  <LinkTo @route="content-years">
+    Content Years
+  </LinkTo>
+  /
+  <LinkTo @route="content-years.detail" @model={{this.model.contentWeek.contentYear.id}}>
+    {{this.model.contentWeek.contentYear.name}}
+  </LinkTo>
+  /
+  <LinkTo @route="content-week" @model={{this.model.contentWeek.id}}>
+    Week {{this.model.contentWeek.number}}
+  </LinkTo>
+  /
+</div>
+
+<h2>{{this.model.dayOfWeek}}</h2>
 
 <ContentList @contents={{this.model.contents}} />

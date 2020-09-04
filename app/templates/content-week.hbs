@@ -1,3 +1,14 @@
+<div>
+  <LinkTo @route="content-years">
+    Content Years
+  </LinkTo>
+  /
+  <LinkTo @route="content-years.detail" @model={{this.model.contentYear.id}}>
+    {{this.model.contentYear.name}}
+  </LinkTo>
+  /
+</div>
+
 <h2>Week {{this.model.number}}</h2>
 
 <ContentDayList @contentDays={{this.model.contentDays}} />
