@@ -102,7 +102,7 @@ export default function (server) {
   });
   const geographyContent2B = server.create('content', {
     subject: geography,
-    contentDay: year1Week1Tuesday,
+    contentDay: year2Week1Tuesday,
     notes: 'Geography Year 2 Content 2',
     sequenceNumber: 2,
   });
