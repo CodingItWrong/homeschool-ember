@@ -1,0 +1,20 @@
+<PaperCard>
+  <PaperToolbar>
+    <PaperToolbarTools>
+      <h2>Contents</h2>
+    </PaperToolbarTools>
+  </PaperToolbar>
+  <PaperContent>
+    <PaperList>
+      {{#each @contents as |content|}}
+        <PaperItem>
+          <p>
+            {{content.subject.name}}:
+            {{content.notes}}
+          </p>
+        </PaperItem>
+        <PaperDivider />
+      {{/each}}
+    </PaperList>
+  </PaperContent>
+</PaperCard>

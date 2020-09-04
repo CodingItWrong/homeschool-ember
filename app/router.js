@@ -11,6 +11,8 @@ Router.map(function () {
     this.route('new');
   });
 
+  this.route('content-day', { path: 'content-days/:content_day_id' });
+
   this.route('content-week', { path: 'content-weeks/:content_week_id' });
 
   this.route('content-years', function () {
