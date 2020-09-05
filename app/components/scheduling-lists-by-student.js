@@ -18,6 +18,10 @@ export default class SchedulingListsByStudentComponent extends Component {
     ]);
 
     const groups = students.map(student => {
+      const studentDay = day.studentDays.find(
+        matchesProperty('student.id', student.id),
+      );
+
       const contentSchedulingPairs = uniqBy(
         [
           // schedulings must come first so uniqBy prefers them
@@ -41,6 +45,7 @@ export default class SchedulingListsByStudentComponent extends Component {
 
       return {
         student,
+        studentDay,
         contentSchedulingPairs,
       };
     });
@@ -75,6 +80,32 @@ export default class SchedulingListsByStudentComponent extends Component {
         console.error(e);
         newScheduling.unloadRecord();
       }
+    }
+  }
+
+  @action async removeGroup(group) {
+    const { student, studentDay, contentSchedulingPairs } = group;
+
+    if (
+      !confirm(
+        `Are you sure you want to remove ${student.name}'s records for the day? All completed content will be lost.`,
+      )
+    ) {
+      return;
+    }
+
+    try {
+      await studentDay.destroyRecord();
+
+      const schedulings = contentSchedulingPairs
+        .map(property('scheduling'))
+        .filter(s => s);
+      for (let scheduling of schedulings) {
+        await scheduling.destroyRecord();
+      }
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error(e);
     }
   }
 }

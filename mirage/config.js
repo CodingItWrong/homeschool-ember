@@ -27,8 +27,10 @@ export default function () {
 
   this.post('/schedulings');
   this.patch('/schedulings/:id');
+  this.delete('/schedulings/:id');
 
   this.post('/student-days');
+  this.delete('/student-days/:id');
 
   this.get('/students');
 

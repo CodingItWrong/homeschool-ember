@@ -3,6 +3,10 @@
     <PaperToolbar>
       <PaperToolbarTools>
         <h2>{{group.student.name}}</h2>
+        <span class="flex"></span>
+        <PaperButton @iconButton={{true}} @onClick={{fn this.removeGroup group}}>
+          {{paper-icon "delete"}}
+        </PaperButton>
       </PaperToolbarTools>
     </PaperToolbar>
     <PaperContent>
