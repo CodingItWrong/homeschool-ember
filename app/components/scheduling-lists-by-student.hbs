@@ -4,7 +4,7 @@
       <PaperToolbarTools>
         <h2>{{group.student.name}}</h2>
         <span class="flex"></span>
-        {{#if this.isEditing}}
+        {{#if (eq this.editingStudent group.student)}}
           <PaperButton @iconButton={{true}} @onClick={{fn this.finishEditing group}}>
             {{paper-icon "check"}}
           </PaperButton>

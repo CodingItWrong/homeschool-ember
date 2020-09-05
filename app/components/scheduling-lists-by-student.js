@@ -10,7 +10,7 @@ import uniqBy from 'lodash/uniqBy';
 export default class SchedulingListsByStudentComponent extends Component {
   @service store;
 
-  @tracked isEditing = false;
+  @tracked editingStudent = null;
 
   get schedulingsGroupedByStudent() {
     const { day } = this.args;
@@ -113,7 +113,7 @@ export default class SchedulingListsByStudentComponent extends Component {
         await studentDay.destroyRecord();
       }
 
-      this.isEditing = true;
+      this.editingStudent = student;
     } catch (e) {
       // eslint-disable-next-line no-console
       console.error(e);
@@ -121,7 +121,7 @@ export default class SchedulingListsByStudentComponent extends Component {
   }
 
   @action finishEditing() {
-    this.isEditing = false;
+    this.editingStudent = null;
   }
 
   @action async removeGroup(group) {
