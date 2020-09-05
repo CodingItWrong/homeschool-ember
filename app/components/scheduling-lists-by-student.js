@@ -4,6 +4,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import matchesProperty from 'lodash/matchesProperty';
 import property from 'lodash/property';
+import sortBy from 'lodash/sortBy';
 import uniq from 'lodash/uniq';
 import uniqBy from 'lodash/uniqBy';
 
@@ -15,10 +16,13 @@ export default class SchedulingListsByStudentComponent extends Component {
   get schedulingsGroupedByStudent() {
     const { day } = this.args;
 
-    const students = uniq([
-      ...day.studentDays.map(property('student')),
-      ...day.schedulings.map(property('student')),
-    ]);
+    const students = sortBy(
+      uniq([
+        ...day.studentDays.map(property('student')),
+        ...day.schedulings.map(property('student')),
+      ]),
+      'name',
+    );
 
     const groups = students.map(student => {
       const studentDay = day.studentDays.find(
