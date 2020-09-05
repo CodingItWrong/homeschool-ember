@@ -12,10 +12,10 @@
           <PaperButton @iconButton={{true}} @onClick={{fn this.editGroup group}}>
             {{paper-icon "edit"}}
           </PaperButton>
+          <PaperButton @iconButton={{true}} @onClick={{fn this.removeGroup group}}>
+            {{paper-icon "delete"}}
+          </PaperButton>
         {{/if}}
-        <PaperButton @iconButton={{true}} @onClick={{fn this.removeGroup group}}>
-          {{paper-icon "delete"}}
-        </PaperButton>
       </PaperToolbarTools>
     </PaperToolbar>
     <PaperContent>
