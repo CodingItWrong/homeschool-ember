@@ -119,11 +119,6 @@ export default function (server) {
     contentDay: year2Week1Monday,
   });
   server.create('studentDay', {
-    day: aug31,
-    student: luigi,
-    contentDay: year1Week1Monday,
-  });
-  server.create('studentDay', {
     day: sep1,
     student: luigi,
     contentDay: year1Week1Tuesday,

@@ -1,3 +1,9 @@
 <h2>{{formatted-date @model.day.date}}</h2>
 
+<AddStudentDayForm
+  @day={{@model.day}}
+  @students={{@model.students}}
+  @onAdd={{action send "refresh"}}
+/>
+
 <SchedulingListsByStudent @day={{@model.day}} />

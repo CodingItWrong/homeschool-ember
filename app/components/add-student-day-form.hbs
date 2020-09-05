@@ -1,0 +1,53 @@
+<PaperCard as |card|>
+  <card.title as |title|>
+    <title.text as |text|>
+      <text.headline>Add Student Day</text.headline>
+    </title.text>
+  </card.title>
+  <PaperForm @onSubmit={{this.handleAdd}} as |form|>
+    <card.content>
+      <div>
+        <form.select
+          @label="Student"
+          @options={{@students}}
+          @selected={{this.student}}
+          @onChange={{action (mut this.student)}}
+          as |student|
+        >
+          {{student.name}}
+        </form.select>
+      </div>
+      {{#if this.student}}
+        <div>
+          <form.select
+            @label="Content Week"
+            @options={{this.student.contentYear.contentWeeks}}
+            @selected={{this.contentWeek}}
+            @onChange={{action (mut this.contentWeek)}}
+            as |contentWeek|
+          >
+            {{contentWeek.name}}
+          </form.select>
+        </div>
+      {{/if}}
+      {{#if this.contentWeek}}
+        <div>
+          <form.select
+            @label="Content Day"
+            @options={{this.contentWeek.contentDays}}
+            @selected={{this.contentDay}}
+            @onChange={{action (mut this.contentDay)}}
+            as |contentDay|
+          >
+            {{contentDay.dayOfWeek}}
+          </form.select>
+        </div>
+        <card.actions>
+          <form.submit-button @raised={{true}} @primary={{true}}>
+            Add
+          </form.submit-button>
+        </card.actions>
+      {{/if}}
+    </card.content>
+  </PaperForm>
+</PaperCard>

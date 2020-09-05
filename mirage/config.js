@@ -11,6 +11,7 @@ export default function () {
 
   this.get('/contents/:id');
 
+  this.get('/content-days');
   this.get('/content-days/:id');
 
   this.get('/content-weeks/:id');
@@ -26,6 +27,8 @@ export default function () {
 
   this.post('/schedulings');
   this.patch('/schedulings/:id');
+
+  this.post('/student-days');
 
   this.get('/students');
 
