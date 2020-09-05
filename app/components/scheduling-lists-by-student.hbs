@@ -27,10 +27,16 @@
               {{contentSchedulingPair.content.notes}}
             </p>
             <div class="md-secondary-container">
-              <controls.checkbox
-                @value={{contentSchedulingPair.scheduling.complete}}
-                @onChange={{fn this.handleToggleComplete contentSchedulingPair group.student}}
-              />
+              {{#if (eq this.editingStudent group.student)}}
+                <controls.button @iconButton={{true}} @onClick={{fn this.deleteScheduling contentSchedulingPair}}>
+                  {{paper-icon "delete"}}
+                </controls.button>
+              {{else}}
+                <controls.checkbox
+                  @value={{contentSchedulingPair.scheduling.complete}}
+                  @onChange={{fn this.handleToggleComplete contentSchedulingPair group.student}}
+                />
+              {{/if}}
             </div>
           </PaperItem>
         {{/each}}

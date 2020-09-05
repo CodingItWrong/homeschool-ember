@@ -153,4 +153,21 @@ export default class SchedulingListsByStudentComponent extends Component {
       console.error(e);
     }
   }
+
+  @action async deleteScheduling(contentSchedulingPair) {
+    const { content, scheduling } = contentSchedulingPair;
+
+    if (
+      !confirm(`Are you sure you want to unschedule content ${content.notes}?`)
+    ) {
+      return;
+    }
+
+    try {
+      await scheduling.destroyRecord();
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error(e);
+    }
+  }
 }
