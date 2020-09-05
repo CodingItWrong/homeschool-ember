@@ -5,5 +5,6 @@ module.exports = {
   rules: {
     'eol-last': 'always',
     'no-action': false, // ember-paper requires it
+    'no-implicit-this': { allow: ['send'] },
   },
 };

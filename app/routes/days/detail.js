@@ -1,3 +1,4 @@
+import { action } from '@ember/object';
 import Route from '@ember/routing/route';
 import RSVP from 'rsvp';
 
@@ -18,6 +19,18 @@ export default class DaysDetailRoute extends Route {
         ].join(','),
         reload: true,
       }),
+      students: this.store.findAll('student', {
+        include: [
+          'contentYear',
+          'contentYear.contentWeeks',
+          'contentYear.contentWeeks.contentDays',
+        ].join(','),
+        reload: true,
+      }),
     });
+  }
+
+  @action refresh() {
+    super.refresh();
   }
 }
