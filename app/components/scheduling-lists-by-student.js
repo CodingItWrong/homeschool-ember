@@ -13,8 +13,8 @@ export default class SchedulingListsByStudentComponent extends Component {
     const { day } = this.args;
 
     const students = uniq([
-      ...day.studentDays.map(studentDay => studentDay.student),
-      ...day.schedulings.map(scheduling => scheduling.student),
+      ...day.studentDays.map(property('student')),
+      ...day.schedulings.map(property('student')),
     ]);
 
     const groups = students.map(student => {
