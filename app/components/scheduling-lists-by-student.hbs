@@ -4,9 +4,15 @@
       <PaperToolbarTools>
         <h2>{{group.student.name}}</h2>
         <span class="flex"></span>
-        <PaperButton @iconButton={{true}} @onClick={{fn this.editGroup group}}>
-          {{paper-icon "edit"}}
-        </PaperButton>
+        {{#if this.isEditing}}
+          <PaperButton @iconButton={{true}} @onClick={{fn this.finishEditing group}}>
+            {{paper-icon "check"}}
+          </PaperButton>
+        {{else}}
+          <PaperButton @iconButton={{true}} @onClick={{fn this.editGroup group}}>
+            {{paper-icon "edit"}}
+          </PaperButton>
+        {{/if}}
         <PaperButton @iconButton={{true}} @onClick={{fn this.removeGroup group}}>
           {{paper-icon "delete"}}
         </PaperButton>

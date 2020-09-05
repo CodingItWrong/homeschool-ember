@@ -1,6 +1,7 @@
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 import matchesProperty from 'lodash/matchesProperty';
 import property from 'lodash/property';
 import uniq from 'lodash/uniq';
@@ -8,6 +9,8 @@ import uniqBy from 'lodash/uniqBy';
 
 export default class SchedulingListsByStudentComponent extends Component {
   @service store;
+
+  @tracked isEditing = false;
 
   get schedulingsGroupedByStudent() {
     const { day } = this.args;
@@ -88,29 +91,37 @@ export default class SchedulingListsByStudentComponent extends Component {
     const { student, studentDay, contentSchedulingPairs } = group;
 
     try {
-      // for each content item, create an incomplete scheduling if one doesn't already exist
-      for (let content of studentDay.contentDay.contents.toArray()) {
-        const scheduling = contentSchedulingPairs.find(
-          pair => pair.content.id === content.id && pair.scheduling !== null,
-        );
-        if (!scheduling) {
-          const scheduling = this.store.createRecord('scheduling', {
-            day,
-            student,
-            content,
-            complete: false,
-          });
-          await scheduling.save();
-          onCustomizeStudentDay();
+      if (studentDay) {
+        // for each content item, create an incomplete scheduling if one doesn't already exist
+        for (let content of studentDay.contentDay.contents.toArray()) {
+          const scheduling = contentSchedulingPairs.find(
+            pair => pair.content.id === content.id && pair.scheduling !== null,
+          );
+          if (!scheduling) {
+            const scheduling = this.store.createRecord('scheduling', {
+              day,
+              student,
+              content,
+              complete: false,
+            });
+            await scheduling.save();
+            onCustomizeStudentDay();
+          }
         }
+
+        // remove studentDay
+        await studentDay.destroyRecord();
       }
 
-      // remove studentDay
-      await studentDay.destroyRecord();
+      this.isEditing = true;
     } catch (e) {
       // eslint-disable-next-line no-console
       console.error(e);
     }
+  }
+
+  @action finishEditing() {
+    this.isEditing = false;
   }
 
   @action async removeGroup(group) {
