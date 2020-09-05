@@ -83,6 +83,36 @@ export default class SchedulingListsByStudentComponent extends Component {
     }
   }
 
+  @action async editGroup(group) {
+    const { day, onCustomizeStudentDay } = this.args;
+    const { student, studentDay, contentSchedulingPairs } = group;
+
+    try {
+      // for each content item, create an incomplete scheduling if one doesn't already exist
+      for (let content of studentDay.contentDay.contents.toArray()) {
+        const scheduling = contentSchedulingPairs.find(
+          pair => pair.content.id === content.id && pair.scheduling !== null,
+        );
+        if (!scheduling) {
+          const scheduling = this.store.createRecord('scheduling', {
+            day,
+            student,
+            content,
+            complete: false,
+          });
+          await scheduling.save();
+          onCustomizeStudentDay();
+        }
+      }
+
+      // remove studentDay
+      await studentDay.destroyRecord();
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error(e);
+    }
+  }
+
   @action async removeGroup(group) {
     const { student, studentDay, contentSchedulingPairs } = group;
 

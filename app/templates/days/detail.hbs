@@ -6,4 +6,7 @@
   @onAdd={{action send "refresh"}}
 />
 
-<SchedulingListsByStudent @day={{@model.day}} />
+<SchedulingListsByStudent
+  @day={{@model.day}}
+  @onCustomizeStudentDay={{action send "refresh"}}
+/>
