@@ -8,6 +8,51 @@ import sortBy from 'lodash/sortBy';
 import uniq from 'lodash/uniq';
 import uniqBy from 'lodash/uniqBy';
 
+export function schedulingsGroupedByStudent(day) {
+  const students = sortBy(
+    uniq([
+      ...day.studentDays.map(property('student')),
+      ...day.schedulings.map(property('student')),
+    ]),
+    'name',
+  );
+
+  const groups = students.map(student => {
+    const studentDay = day.studentDays.find(
+      matchesProperty('student.id', student.id),
+    );
+
+    const contentSchedulingPairs = uniqBy(
+      [
+        // schedulings must come first so uniqBy prefers them
+        ...day.schedulings
+          .filter(matchesProperty('student.id', student.id))
+          .map(scheduling => ({
+            content: scheduling.content,
+            scheduling,
+          })),
+        ...day.studentDays
+          .filter(matchesProperty('student.id', student.id))
+          .flatMap(studentDay =>
+            studentDay.contentDay.contents.map(content => ({
+              content,
+              scheduling: null,
+            })),
+          ),
+      ],
+      property('content.id'),
+    );
+
+    return {
+      student,
+      studentDay,
+      contentSchedulingPairs,
+    };
+  });
+
+  return groups;
+}
+
 export default class SchedulingListsByStudentComponent extends Component {
   @service store;
 
@@ -15,49 +60,7 @@ export default class SchedulingListsByStudentComponent extends Component {
 
   get schedulingsGroupedByStudent() {
     const { day } = this.args;
-
-    const students = sortBy(
-      uniq([
-        ...day.studentDays.map(property('student')),
-        ...day.schedulings.map(property('student')),
-      ]),
-      'name',
-    );
-
-    const groups = students.map(student => {
-      const studentDay = day.studentDays.find(
-        matchesProperty('student.id', student.id),
-      );
-
-      const contentSchedulingPairs = uniqBy(
-        [
-          // schedulings must come first so uniqBy prefers them
-          ...day.schedulings
-            .filter(matchesProperty('student.id', student.id))
-            .map(scheduling => ({
-              content: scheduling.content,
-              scheduling,
-            })),
-          ...day.studentDays
-            .filter(matchesProperty('student.id', student.id))
-            .flatMap(studentDay =>
-              studentDay.contentDay.contents.map(content => ({
-                content,
-                scheduling: null,
-              })),
-            ),
-        ],
-        property('content.id'),
-      );
-
-      return {
-        student,
-        studentDay,
-        contentSchedulingPairs,
-      };
-    });
-
-    return groups;
+    return schedulingsGroupedByStudent(day);
   }
 
   @action async handleToggleComplete({ content, scheduling }, student) {
