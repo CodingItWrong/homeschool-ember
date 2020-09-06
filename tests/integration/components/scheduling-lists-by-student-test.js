@@ -7,6 +7,7 @@ describe('Integration | Component | scheduling-lists-by-student', function (hook
 
   const mario = { id: 1, name: 'Mario' };
   const luigi = { id: 2, name: 'Luigi' };
+  const peach = { id: 3, name: 'Peach' };
   const content1 = { id: 1 };
   const content2 = { id: 2 };
   const content3 = { id: 3 };
@@ -132,6 +133,49 @@ describe('Integration | Component | scheduling-lists-by-student', function (hook
       {
         content: content2,
         scheduling: null,
+      },
+    ]);
+  });
+
+  it('shows contents for a student with no studentDay', function (assert) {
+    const day = {
+      studentDays: [],
+      schedulings: [
+        {
+          student: peach,
+          content: content1,
+          complete: true,
+        },
+        {
+          student: peach,
+          content: content2,
+          complete: false,
+        },
+      ],
+    };
+
+    const result = schedulingsGroupedByStudent(day);
+
+    assert.equal(result.length, 1);
+
+    assert.deepEqual(result[0].student, peach);
+    assert.equal(result[0].studentDay, null);
+    assert.deepEqual(result[0].contentSchedulingPairs, [
+      {
+        content: content1,
+        scheduling: {
+          student: peach,
+          content: content1,
+          complete: true,
+        },
+      },
+      {
+        content: content2,
+        scheduling: {
+          student: peach,
+          content: content2,
+          complete: false,
+        },
       },
     ]);
   });
