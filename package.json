@@ -51,7 +51,7 @@
     "ember-simple-auth": "^3.0.1",
     "ember-sinon-qunit": "^5.0.0",
     "ember-source": "~3.20.2",
-    "ember-template-lint": "^2.14.0",
+    "ember-template-lint": "^2.15.0",
     "ember-test-selectors": "^5.0.0",
     "eslint": "^7.14.0",
     "eslint-config-prettier": "^7.0.0",
